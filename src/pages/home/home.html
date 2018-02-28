@@ -1,0 +1,15 @@
+<ion-content padding>
+  <div class="centraliza-logo">
+      <span class="logo-title"> Avise-Me </span>
+      <img class="logo" src="../../assets/imgs/logo.png"/>
+  </div>
+
+  <div class="box-placa">
+    <span class="title">Digite a placa</span>
+    <ion-item>
+        <ion-label color="light" floating>Placa</ion-label>
+        <ion-input maskPlaca maxLength="8" [(ngModel)]="placa"></ion-input>
+    </ion-item>
+    <button color="light" ion-button round outline> PESQUISAR </button>
+  </div>
+</ion-content>
