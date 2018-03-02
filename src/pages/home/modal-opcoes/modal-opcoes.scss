@@ -1,0 +1,31 @@
+modal-opcoes.ion-page {
+    background-color: rgba(0,0,0,0.4) !important;
+    ion-content {
+        width: 90%;
+        height: 63%;
+        top: 18.5%;
+        left: 5%;
+        right: 5%;
+        bottom: 18.5%;
+        border-radius: 5px;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .radio-md .radio-checked {
+        border-color: #7eefdb;
+    }
+
+    .radio-md .radio-inner {
+        background-color: #7eefdb;
+    }
+
+    .item-radio-checked.item-md ion-label {
+        color: #7eefdb;
+    }
+}

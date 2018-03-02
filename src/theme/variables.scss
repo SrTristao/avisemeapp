@@ -39,7 +39,8 @@ $colors: (
   danger:     #f53d3d,
   light:      white,
   dark:       #222,
-  brand-color: #21bba0
+  brand-color: #21bba0,
+  brand-color-light: #7eefdb
 );
 
 
@@ -73,6 +74,11 @@ $colors: (
 
 @import "ionic.theme.default";
 
+.toast-md .toast-wrapper.toast-top {
+  border-radius: 10px;
+  top: 10px !important;
+  width: 90%;
+}
 ion-content {
   background-color: #21bba0 !important;
   color: white !important;
@@ -82,6 +88,25 @@ ion-item {
   background-color: transparent !important;
   color: white !important;
 }
+
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border-bottom-color: white !important;
+}
+
+.item-md.item-input.item-input-has-focus .item-inner,
+.item-md.item-input.input-has-focus .item-inner {
+  border-bottom-color: white !important;
+  -webkit-box-shadow: inset 0 -1px 0 0 white !important;
+  box-shadow: inset 0 -1px 0 0 white !important;
+}
+
+.item-input-has-focus .label-md[stacked],
+.input-has-focus .label-md[stacked],
+.item-input-has-focus .label-md[floating],
+.input-has-focus .label-md[floating] {
+  color: white !important;
+}
+
 
 .tabs-md .tab-button[aria-selected=true], .tabs-md .tab-button[aria-selected=true] .tab-button-icon,
 .tabs-ios .tab-button[aria-selected=true], .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {

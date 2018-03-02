@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the NotificacaoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NotificacaoRecebidaPage } from './notificacao-recebida/notificacao-recebida';
+import { NotificacaoEnviadaPage } from './notificacao-enviada/notificacao-enviada';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NotificacaoPage {
 
+  notificacaoRecebida = NotificacaoRecebidaPage;
+  notificacaoEnviada = NotificacaoEnviadaPage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NotificacaoPage');
-  }
 
 }

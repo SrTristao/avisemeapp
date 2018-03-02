@@ -9,9 +9,14 @@ import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { NotificacaoPage } from '../pages/notificacao/notificacao';
 import { TabsPage } from '../pages/tabs/tabs';
+import { NotificacaoRecebidaPage } from '../pages/notificacao/notificacao-recebida/notificacao-recebida';
+import { NotificacaoEnviadaPage } from '../pages/notificacao/notificacao-enviada/notificacao-enviada'; 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { LoadingProvider } from '../providers/loading/loading.provider';
+import { MessageProvider } from '../providers/message/message.provider';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     NotificacaoPage,
     TabsPage,
     MaskPlacaDirective,
-    Ionic2MaskDirective
+    Ionic2MaskDirective,
+    NotificacaoRecebidaPage,
+    NotificacaoEnviadaPage
   ],
   imports: [
     BrowserModule,
@@ -33,12 +40,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     PerfilPage,
     NotificacaoPage,
-    TabsPage
+    TabsPage,
+    NotificacaoRecebidaPage,
+    NotificacaoEnviadaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LoadingProvider,
+    MessageProvider
   ]
 })
 export class AppModule {}

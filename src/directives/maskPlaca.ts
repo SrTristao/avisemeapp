@@ -6,7 +6,6 @@ import { NgControl } from '@angular/forms';
 })
 export class MaskPlacaDirective {
     @Input() mask: string;
-        private regex: RegExp = new RegExp(/^-?[0-9]+(\.[0-9]*){0,1}$/g);
         constructor(
             private control: NgControl
         ) { }
@@ -24,7 +23,6 @@ export class MaskPlacaDirective {
         onKeyUp($event: any) {
             if ($event.keyCode !== 13 && $event.keyCode !== 9 && $event.keyCode !== 8) {
                 let value = this.control.control.value;
-                console.log(value);
                 this.control.control.setValue(this.format(value));
             }
         }

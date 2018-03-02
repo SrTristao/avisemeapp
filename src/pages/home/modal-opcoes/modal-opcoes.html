@@ -1,0 +1,43 @@
+<ion-content>  
+    <ion-list>      
+        <ion-list-header>
+            Escolha uma opção
+        </ion-list-header>      
+        <ion-item>
+            <ion-label>Luz Acesa</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Luz Acesa')"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Pisca alerta ligado</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Pisca alerta ligado')"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Vidro aberto</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Vidro aberto')"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Porta aberta</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Porta aberta')"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+                <ion-label>Batida</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Batida')"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Movimentação suspeita</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Movimentação suspeita')"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Roubo</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Roubo')"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Estacionado em local proibido</ion-label>
+            <ion-checkbox color="brand-color-light" (ionChange)="changeCheckBox('Estacionado em local proibido')"></ion-checkbox>
+        </ion-item>        
+    </ion-list>   
+
+    <div class="button-container">
+        <button color="light" ion-button round outline [disabled]="listaNotificacao.length === 0" (click)="enviar()"> ENVIAR </button>
+    </div>
+</ion-content>
