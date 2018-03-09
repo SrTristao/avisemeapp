@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Ionic2MaskDirective } from "ionic2-mask-directive";
 import { MaskPlacaDirective } from '../directives/maskPlaca';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -32,7 +33,8 @@ import { MessageProvider } from '../providers/message/message.provider';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    Ionic2RatingModule 
   ],
   bootstrap: [IonicApp],
   entryComponents: [

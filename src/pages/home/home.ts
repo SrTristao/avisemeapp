@@ -21,7 +21,7 @@ export class HomePage {
       //   this.msgProvider.showMessageToast('Placa inválida ou inexistente', undefined, 'top');
       //   return;
       // }
-      const opcoesModal = this.modalCtrl.create('ModalOpcoes');
+      const opcoesModal = this.modalCtrl.create('ModalOpcoes', {}, { enableBackdropDismiss: false });
       opcoesModal.present();
       opcoesModal.onWillDismiss(() => {
         this.msgProvider.showMessageToast('Notificação enviada com sucesso !!!', undefined, 'top');

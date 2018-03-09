@@ -1,0 +1,40 @@
+<ion-content>   
+    <form [formGroup]="formUsuario"> 
+        <ion-item>
+            <ion-label color="light" floating>Nome</ion-label>
+            <ion-input formControlName="nome"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Email</ion-label>
+            <ion-input formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Endereço</ion-label>
+            <ion-input  formControlName="endereco"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Complemento</ion-label>
+            <ion-input  formControlName="complemento"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Bairro</ion-label>
+            <ion-input  formControlName="bairro"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>CEP</ion-label>
+            <ion-input formControlName="cep"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Cidade</ion-label>
+            <ion-input formControlName="cidade"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>UF</ion-label>
+            <ion-input formControlName="uf"></ion-input>
+        </ion-item>
+    </form>
+    <div class="button-container">
+        <button (click)="enviar(formUsuario.value)" color="light" [disabled]="!formUsuario.valid" ion-button round outline> ENVIAR </button>
+        <button (click)="cancelar()" color="danger" ion-button round outline> CANCELAR </button>
+    </div>
+</ion-content>

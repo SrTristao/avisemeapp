@@ -1,18 +1,40 @@
-<!--
-  Generated template for the PerfilPage page.
+<ion-content>
+  <div class="info-perfil">
+    <div class="editar-info">
+        <ion-icon ios="ios-settings" md="md-settings" (click)="editarInfo()"></ion-icon>
+        <ion-icon ios="ios-key" md="ios-key" (click)="changePassword()"></ion-icon>
+    </div>
+    <img src="../../assets/imgs/perfil.jpeg"/>
+    <span>João Alexandre Tristão de Almeida</span>
+  </div>
+  <div class="rating">
+    <span> Sua Avaliação: </span>
+    <rating [(ngModel)]="rateUser" 
+      readOnly="true"
+      max="5"
+      emptyStarIconName="star-outline"
+      halfStarIconName="star-half"
+      starIconName="star"
+      nullable="false"
+      (ngModelChange)="onModelChange($event)">
+    </rating>
+  </div>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>perfil</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
+  <ion-scroll scrollX="true" class="veiculos">
+    <div class="infinit-scroll">
+      <div class="veiculo" (click)="openVeiculo()" *ngFor="let veiculo of veiculos">
+        <div class="veiculo-info">
+          <span class="title-veiculo"> {{veiculo.nome}} </span>     
+          <span class="placa-veiculo"> {{veiculo.placa}} </span>
+          <span class="tipo-veiculo"> {{veiculo.tipo}} </span>
+        </div>  
+      </div>
+      <div class="veiculo" (click)="addVeiculo()">
+        <div class="veiculo-info">
+            <ion-icon name="add-circle"></ion-icon>
+            <span class="tipo-veiculo">Adicionar Veiculo</span>
+        </div>
+      </div>
+    </div>
+  </ion-scroll>
 </ion-content>
