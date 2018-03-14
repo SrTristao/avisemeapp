@@ -1,0 +1,42 @@
+<ion-content padding text-center>
+  <form [formGroup] = "formRegistrar" (ngSubmit)="registrar(formRegistrar.value)" [hidden]="loading">
+    <ion-item>   
+      <ion-label color="primary" floating>Nome</ion-label>
+      <ion-input type="text" formControlName="nome_usuario"></ion-input>
+    </ion-item>
+    <ion-item>   
+      <ion-label color="primary" floating>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>   
+      <ion-label color="primary" floating>Endereço</ion-label>
+      <ion-input type="text" formControlName="endereco"></ion-input>
+    </ion-item>
+    <ion-item>   
+      <ion-label color="primary" floating>Numero</ion-label>
+      <ion-input type="number" formControlName="end_numero"></ion-input>
+    </ion-item>
+    <ion-item>   
+      <ion-label color="primary" floating>CEP</ion-label>
+      <ion-input type="number" formControlName="cep"></ion-input>
+    </ion-item>
+    <ion-item>   
+        <ion-label color="primary" floating>Data Nascimento</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" formControlName="data_nascimento"></ion-datetime>
+      </ion-item>
+    <ion-item>   
+      <ion-label color="primary" floating>Complemento</ion-label>
+      <ion-input type="text" formControlName="complemento"></ion-input>
+    </ion-item>
+    <ion-item>   
+      <ion-label color="primary" floating>Usuario</ion-label>
+      <ion-input type="text" formControlName="usuario_login"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Senha</ion-label>
+      <ion-input type="password" formControlName="senha" ></ion-input>
+    </ion-item>
+    <button ion-button full class="btn-registrar" color="danger">Registrar</button>
+  </form>
+  <button ion-button full class="btn-voltar" color="secondary" (click)="voltar()"> Voltar </button>
+</ion-content>

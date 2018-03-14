@@ -1,8 +1,23 @@
-<ion-content>
+<ion-content (click)="mainClick(fab, $event)">
   <div class="info-perfil">
     <div class="editar-info">
-        <ion-icon ios="ios-settings" md="md-settings" (click)="editarInfo()"></ion-icon>
-        <ion-icon ios="ios-key" md="ios-key" (click)="changePassword()"></ion-icon>
+        <ion-fab top right edge class="top-menu" #fab>
+            <button ion-fab mini><ion-icon name="menu"></ion-icon></button>
+            <ion-fab-list>
+              <div class="botao-menu"  (click)="editarInfo(fab)">
+                <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+                <span>Meus dados</span>
+              </div>
+              <div class="botao-menu"  (click)="changePassword(fab)">
+                <ion-icon ios="ios-key" md="ios-key"></ion-icon>
+                <span>Trocar Senha</span>
+              </div>   
+              <div class="botao-menu"  (click)="sair(fab)">
+                <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
+                <span>Sair</span>
+              </div>             
+            </ion-fab-list>
+          </ion-fab>
     </div>
     <img src="../../assets/imgs/perfil.jpeg"/>
     <span>João Alexandre Tristão de Almeida</span>

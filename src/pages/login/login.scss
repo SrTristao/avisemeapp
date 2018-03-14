@@ -1,0 +1,46 @@
+page-login {
+    
+    .label-ios-primary, .item-input .label-ios-primary, .item-select .label-ios-primary, .item-datetime .label-ios-primary, .text-input {
+        color: white;
+    }
+    .item-ios {
+        background-color: transparent;
+    }
+    .label-md-primary, .item-input .label-md-primary, .item-select .label-md-primary, .item-datetime .label-md-primary, .item-input-has-focus .label-md[stacked],
+    .input-has-focus .label-md[stacked],
+    .item-input-has-focus .label-md[floating],
+    .input-has-focus .label-md[floating] {
+        color: white;
+    }
+    .item-md {
+        background-color: transparent;
+    }
+    .btn-logar {
+        margin-top: 60px;
+    }
+    .btn-registar {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .recuperar-senha {
+        font-size: 17px;
+        color: white;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        span {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            background: url('../assets/imgs/logo.png');
+            background-repeat: no-repeat;
+            background-position: center; 
+        }
+    }
+}

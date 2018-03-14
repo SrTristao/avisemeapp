@@ -1,6 +1,36 @@
 <ion-content>   
-
+    <form [formGroup]="formVeiculo"> 
+        <ion-item>
+            <ion-label color="light" floating>Nome Veiculo</ion-label>
+            <ion-input formControlName="nome"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Placa</ion-label>
+            <ion-input formControlName="placa"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>UF</ion-label>
+            <ion-input formControlName="uf"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Tipo</ion-label>
+            <ion-input  formControlName="tipo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Marca</ion-label>
+            <ion-input  formControlName="marca"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Ano</ion-label>
+            <ion-input  formControlName="ano"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Modelo</ion-label>
+            <ion-input formControlName="modelo"></ion-input>
+        </ion-item>
+    </form>
     <div class="button-container">
-        <button color="light" ion-button round outline (click)="enviar()"> ENVIAR </button>
+        <button color="light" ion-button round outline (click)="enviar(formVeiculo.value)"> ENVIAR </button>
+        <button (click)="cancelar()" color="danger" ion-button round outline> CANCELAR </button>
     </div>
 </ion-content>

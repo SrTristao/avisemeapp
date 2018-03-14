@@ -1,0 +1,19 @@
+<ion-content padding text-center>
+  <div class="header">
+    <span> Avise-me </span>
+    <img src="assets/imgs/logo.png" alt="logo">
+  </div>
+  <form [formGroup] = "formLogin" (ngSubmit)="login(formLogin.value)" [hidden]="loading">
+    <ion-item>   
+      <ion-label color="primary" floating>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Senha</ion-label>
+      <ion-input type="password" formControlName="senha" ></ion-input>
+    </ion-item>
+    <button ion-button full class="btn-logar" color="danger">Entrar</button>
+  </form>
+  <button ion-button full class="btn-registar" color="secondary" (click)="registrar()"> Registrar </button>
+  <span class="recuperar-senha" (click)="resetSenha()"> Esqueceu sua senha? </span>
+</ion-content>

@@ -1,0 +1,12 @@
+<ion-content>   
+    <form [formGroup]="formPassword"> 
+        <ion-item>
+            <ion-label color="light" floating>Email</ion-label>
+            <ion-input formControlName="email"></ion-input>
+        </ion-item>
+    </form>
+    <div class="button-container">
+        <button color="light" ion-button round outline (click)="enviar(formPassword.value)"> ENVIAR </button>
+        <button (click)="cancelar()" color="danger" ion-button round outline> CANCELAR </button>
+    </div>
+</ion-content>

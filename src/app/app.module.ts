@@ -10,6 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { NotificacaoPage } from '../pages/notificacao/notificacao';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 import { NotificacaoRecebidaPage } from '../pages/notificacao/notificacao-recebida/notificacao-recebida';
 import { NotificacaoEnviadaPage } from '../pages/notificacao/notificacao-enviada/notificacao-enviada'; 
 
@@ -26,6 +28,8 @@ import { MessageProvider } from '../providers/message/message.provider';
     PerfilPage,
     NotificacaoPage,
     TabsPage,
+    LoginPage,
+    CadastroPage,
     MaskPlacaDirective,
     Ionic2MaskDirective,
     NotificacaoRecebidaPage,
@@ -43,6 +47,8 @@ import { MessageProvider } from '../providers/message/message.provider';
     PerfilPage,
     NotificacaoPage,
     TabsPage,
+    LoginPage,
+    CadastroPage,
     NotificacaoRecebidaPage,
     NotificacaoEnviadaPage
   ],

@@ -43,6 +43,10 @@ $colors: (
   brand-color-light: #7eefdb
 );
 
+.button-outline-md-danger, .button-outline-ios-danger {
+  color: #fb1010 !important;
+}
+
 
 // App iOS Variables
 // --------------------------------------------------
