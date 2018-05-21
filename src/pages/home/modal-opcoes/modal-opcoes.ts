@@ -13,6 +13,9 @@ export class ModalOpcoes {
   private loadingProvider: LoadingProvider) {
   }
 
+  cancelar() {
+    this.view.dismiss('cancelado');
+  }
   enviar() {
     const loading = this.loadingProvider.loadingDefault('Enviando notificação');
     loading.present();

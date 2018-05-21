@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, ViewController } from 'ionic-angular';
+import { NavController, IonicPage, ViewController, NavParams } from 'ionic-angular';
 import { LoadingProvider } from '../../../providers/loading/loading.provider';
+import { MessageProvider } from '../../../providers/message/message.provider';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
 
 @IonicPage()
 @Component({
@@ -13,19 +15,22 @@ export class ModalPassword {
   formPassword: FormGroup;
 
   constructor(public navCtrl: NavController, private view: ViewController, 
-  private loadingProvider: LoadingProvider) {
+  private loadingProvider: LoadingProvider, private userService: UserService,
+  private msgProvider: MessageProvider, private params: NavParams) {
+    const user = this.params.get('user');
     this.formPassword = new FormGroup({
-      senhaAtual: new FormControl("", [Validators.required, Validators.minLength(6)]),
-      novaSenha: new FormControl("", [Validators.required, Validators.minLength(6)]),
-      repNovaSenha: new FormControl("", [Validators.required, Validators.minLength(6), this.passwordConfirming.bind(this)])
+      password: new FormControl("", [Validators.required, Validators.minLength(6)]),
+      newPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
+      repNewPassword: new FormControl("", [Validators.required, Validators.minLength(6), this.passwordConfirming.bind(this)]),
+      email: new FormControl(user.email)
     });
   }
 
   passwordConfirming(fieldControl: FormControl): { notEqual: boolean } {
-    if (!this.formPassword || !this.formPassword.get("novaSenha") || !this.formPassword.get("novaSenha").value) {
+    if (!this.formPassword || !this.formPassword.get("newPassword") || !this.formPassword.get("newPassword").value) {
       return null;
     }
-    var confirmar = this.formPassword.get("novaSenha");
+    var confirmar = this.formPassword.get("newPassword");
     if (confirmar) {
       if(fieldControl.value === confirmar.value) {
         return null;
@@ -35,14 +40,18 @@ export class ModalPassword {
     return null;
   }
 
-  enviar(password: any) {
+  enviar(passwords) {
     const loading = this.loadingProvider.loadingDefault('Atualizando senha...');
     loading.present();
-    setTimeout(() => {
-    //  this.listaNotificacao.forEach(param => console.log(param));
+    this.userService.changePassword(passwords).subscribe(response => {
+      this.userService.setToken(response.result);
+      this.msgProvider.showMessageToast(response.message);
       loading.dismiss();
-      this.view.dismiss(password);
-    }, 5000)
+      this.view.dismiss();
+    }, err => {
+      loading.dismiss();
+      this.msgProvider.showMessageToast(err.error.message);
+    })
   }
 
   cancelar() {

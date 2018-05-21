@@ -1,36 +1,36 @@
 <ion-content>   
     <form [formGroup]="formUsuario"> 
-        <ion-item>
-            <ion-label color="light" floating>Nome</ion-label>
-            <ion-input formControlName="nome"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>Nome</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>Email</ion-label>
-            <ion-input formControlName="email"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>Data Nascimento</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" formControlName="dateofbirth"></ion-datetime>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>Endereço</ion-label>
-            <ion-input  formControlName="endereco"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>Endereço</ion-label>
+            <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>Complemento</ion-label>
-            <ion-input  formControlName="complemento"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>Complemento</ion-label>
+            <ion-input type="text" formControlName="complement"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>Bairro</ion-label>
-            <ion-input  formControlName="bairro"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>Bairro</ion-label>
+            <ion-input type="text" formControlName="neighborhood"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>CEP</ion-label>
-            <ion-input formControlName="cep"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>CEP</ion-label>
+            <ion-input type="number" formControlName="postalCode"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>Cidade</ion-label>
-            <ion-input formControlName="cidade"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>Cidade</ion-label>
+            <ion-input type="text" formControlName="city"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>UF</ion-label>
-            <ion-input formControlName="uf"></ion-input>
+        <ion-item>   
+            <ion-label color="primary" floating>Estado</ion-label>
+            <ion-input type="text" formControlName="state"></ion-input>
         </ion-item>
     </form>
     <div class="button-container">

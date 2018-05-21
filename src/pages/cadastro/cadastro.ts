@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
-
+import { UserService } from '../../services/user.service';
+import { LoadingProvider } from '../../providers/loading/loading.provider';
+import { MessageProvider } from '../../providers/message/message.provider';
 @IonicPage()
 @Component({
   selector: 'page-cadastro',
@@ -13,40 +15,58 @@ export class CadastroPage {
 
   public formRegistrar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private userService: UserService, private loadingProvider: LoadingProvider, 
+    private messageProvider: MessageProvider) {
     this.formRegistrar = new FormGroup({
-      nome_usuario: new FormControl("", Validators.compose([
+      name: new FormControl("", Validators.compose([
         Validators.required
       ])),
-      usuario_login: new FormControl("", Validators.compose([
+      password: new FormControl("", Validators.compose([
         Validators.required        
       ])),
-      senha: new FormControl("", Validators.compose([
-        Validators.required        
-      ])),
-      data_nascimento: new FormControl("", Validators.compose([
+      dateofbirth: new FormControl("", Validators.compose([
         Validators.required,      
       ])),
-      endereco: new FormControl("", Validators.compose([
+      address: new FormControl("", Validators.compose([
         Validators.required        
       ])),
-      end_numero: new FormControl("", Validators.compose([
+      postalCode: new FormControl("", Validators.compose([
         Validators.required        
       ])),
-      cep: new FormControl("", Validators.compose([
-        Validators.required        
-      ])),
-      complemento: new FormControl("", Validators.compose([
+      complement: new FormControl("", Validators.compose([
         Validators.required        
       ])),
       email: new FormControl("", Validators.compose([
+        Validators.required        
+      ])),
+      neighborhood: new FormControl("", Validators.compose([
+        Validators.required        
+      ])),
+      city: new FormControl("", Validators.compose([
+        Validators.required        
+      ])),
+      state: new FormControl("", Validators.compose([
         Validators.required        
       ]))
     })
   }
 
   registrar(usuario) {
-    this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+    const loading = this.loadingProvider.loadingDefault('Registrando usuário...');
+    loading.present();
+    console.log(usuario);
+    this.userService.registerUser(usuario).subscribe(response => {
+      loading.dismiss();
+      if(response.message === 'Usuário registrado com sucesso.') {
+        this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+      } else {
+        this.messageProvider.showMessageToast(response.message);
+      }
+    }, (err) => {
+      loading.dismiss();
+      this.messageProvider.showMessageToast(err.error.message);
+    })
   }
 
   voltar() {

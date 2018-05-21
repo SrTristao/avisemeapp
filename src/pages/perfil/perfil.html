@@ -19,8 +19,8 @@
             </ion-fab-list>
           </ion-fab>
     </div>
-    <img src="../../assets/imgs/perfil.jpeg"/>
-    <span>João Alexandre Tristão de Almeida</span>
+    <img src="assets/imgs/perfil.jpeg"/>
+    <span>{{user !== undefined ? user.name: ''}}</span>
   </div>
   <div class="rating">
     <span> Sua Avaliação: </span>
@@ -37,11 +37,12 @@
 
   <ion-scroll scrollX="true" class="veiculos">
     <div class="infinit-scroll">
-      <div class="veiculo" (click)="openVeiculo()" *ngFor="let veiculo of veiculos">
+      <div class="veiculo" (click)="openVeiculo(vehicle)" *ngFor="let vehicle of vehicles;  let idx = index"
+      (press)="pressEvent(vehicle, idx)">
         <div class="veiculo-info">
-          <span class="title-veiculo"> {{veiculo.nome}} </span>     
-          <span class="placa-veiculo"> {{veiculo.placa}} </span>
-          <span class="tipo-veiculo"> {{veiculo.tipo}} </span>
+          <span class="title-veiculo"> {{vehicle.name}} </span>     
+          <span class="placa-veiculo"> {{vehicle.board}} </span>
+          <span class="tipo-veiculo"> {{vehicle.type}} </span>
         </div>  
       </div>
       <div class="veiculo" (click)="addVeiculo()">

@@ -1,32 +1,39 @@
 <ion-content>   
     <form [formGroup]="formVeiculo"> 
         <ion-item>
-            <ion-label color="light" floating>Nome Veiculo</ion-label>
-            <ion-input formControlName="nome"></ion-input>
+            <ion-label color="light" floating>Nome Veículo</ion-label>
+            <ion-input formControlName="name"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Placa</ion-label>
-            <ion-input formControlName="placa"></ion-input>
+            <ion-input formControlName="board"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>UF</ion-label>
-            <ion-input formControlName="uf"></ion-input>
+            <ion-input formControlName="state"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="light" floating>Tipo</ion-label>
-            <ion-input  formControlName="tipo"></ion-input>
+            <ion-label>Tipo</ion-label>
+            <ion-select formControlName="type">
+                <ion-option value="Moto">Moto</ion-option>
+                <ion-option value="Carro">Carro</ion-option>
+            </ion-select>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Marca</ion-label>
-            <ion-input  formControlName="marca"></ion-input>
+            <ion-input  formControlName="brand"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Ano</ion-label>
-            <ion-input  formControlName="ano"></ion-input>
+            <ion-input  formControlName="year"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Modelo</ion-label>
-            <ion-input formControlName="modelo"></ion-input>
+            <ion-input formControlName="model"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="light" floating>Cor</ion-label>
+            <ion-input formControlName="color"></ion-input>
         </ion-item>
     </form>
     <div class="button-container">

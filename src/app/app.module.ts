@@ -5,7 +5,9 @@ import { MyApp } from './app.component';
 import { Ionic2MaskDirective } from "ionic2-mask-directive";
 import { MaskPlacaDirective } from '../directives/maskPlaca';
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { IonicStorageModule  } from '@ionic/storage';
 
+import { ServicesModule } from '../services/services.module';
 import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { NotificacaoPage } from '../pages/notificacao/notificacao';
@@ -38,7 +40,9 @@ import { MessageProvider } from '../providers/message/message.provider';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    Ionic2RatingModule 
+    IonicStorageModule.forRoot(),
+    Ionic2RatingModule,
+    ServicesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
