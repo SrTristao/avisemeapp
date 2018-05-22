@@ -10,6 +10,6 @@
         <ion-label color="light" floating>Placa</ion-label>
         <ion-input maskPlaca maxLength="8" [(ngModel)]="placa"></ion-input>
     </ion-item>
-    <button color="light" ion-button round outline [disabled]="placa.length !== 8" (click)="presentOpcoesModal()"> PESQUISAR </button>
+    <button color="light" ion-button round outline [disabled]="placa.length !== 8" (click)="verifyGPS()"> PESQUISAR </button>
   </div>
 </ion-content>

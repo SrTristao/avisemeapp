@@ -23,4 +23,9 @@ export class Constants {
         login: '/auth',
         resetPassword:'/auth/resetPassword'
     }
+    public static notification = {
+        register: '/notification',
+        getSend: '/notification/send/{0}',
+        getReceive: '/notification/receive/{0}'
+    }
 }

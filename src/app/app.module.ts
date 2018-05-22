@@ -6,6 +6,9 @@ import { Ionic2MaskDirective } from "ionic2-mask-directive";
 import { MaskPlacaDirective } from '../directives/maskPlaca';
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { IonicStorageModule  } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Push } from "@ionic-native/push";
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 import { ServicesModule } from '../services/services.module';
 import { HomePage } from '../pages/home/home';
@@ -59,9 +62,12 @@ import { MessageProvider } from '../providers/message/message.provider';
   providers: [
     StatusBar,
     SplashScreen,
+    Push,
+    Diagnostic,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoadingProvider,
-    MessageProvider
+    MessageProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

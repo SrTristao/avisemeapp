@@ -19,11 +19,19 @@ export class ModalOpcoes {
   enviar() {
     const loading = this.loadingProvider.loadingDefault('Enviando notificação');
     loading.present();
-    setTimeout(() => {
-      this.listaNotificacao.forEach(param => console.log(param));
-      loading.dismiss();
-      this.view.dismiss();
-    }, 5000)
+    let message = '';
+    this.listaNotificacao.forEach((param, index) => {
+      if (index === 0) {
+        message = param;
+      } else {
+        message = message + ', ' + param;
+      }
+
+      if(index === this.listaNotificacao.length-1) {
+        loading.dismiss();
+        this.view.dismiss(message);
+      }
+    });
   }
 
   changeCheckBox(param) {
