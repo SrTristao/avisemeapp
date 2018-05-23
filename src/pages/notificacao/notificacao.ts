@@ -14,7 +14,6 @@ export class NotificacaoPage {
   notificacaoEnviada = NotificacaoEnviadaPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
+  }  
 
 }

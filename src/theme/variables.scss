@@ -133,6 +133,19 @@ ion-item {
   }
 }
 
+ul {
+  padding: 0px;
+  
+  &.rating li {
+      background: none;
+      color: #FFD700;
+  
+      ion-icon {
+          font-size: 1.5em;
+      }
+  }
+}
+
 
 
 

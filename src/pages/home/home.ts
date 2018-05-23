@@ -34,15 +34,8 @@ export class HomePage {
         this.msgProvider.showMessageToast('GPS não habilitado.');
         return;
       } 
-      this.diagnostic.isGpsLocationAvailable().then(locationAvailable => {
-        if (!locationAvailable) {
-          this.msgProvider.showMessageToast('GPS não habilitado.');
-          return;
-        }  
-        this.sendMessage();
-      }).catch(error => {
-        this.msgProvider.showMessageToast('GPS não habilitado.')
-      });
+
+      this.sendMessage();
     }).catch(error => {
       this.msgProvider.showMessageToast('GPS não habilitado.')
     });
@@ -68,13 +61,23 @@ export class HomePage {
       opcoesModal.present();
       opcoesModal.onWillDismiss((data) => {
         if (data !== 'cancelado') {
-            this.geolocation.getCurrentPosition().then(pos => {
+            const load = this.loadingProvider.loadingDefault('Enviando notificação...');
+            load.present();
+            this.geolocation.getCurrentPosition({
+              enableHighAccuracy: true,
+              timeout: 5000,
+              maximumAge: 0
+            }).then(pos => {
               notification.lat_user_send = pos.coords.latitude;
               notification.lon_user_send = pos.coords.longitude;
               notification.message = data;
               this.notificationService.registerNotification(notification).subscribe(response => {
                 this.msgProvider.showMessageToast('Notificação enviada com sucesso !!!', undefined, 'top');
                 this.placa = '';
+                load.dismiss();
+              }, err => {
+                this.msgProvider.showMessageToast(err.error.message, undefined, 'top');
+                load.dismiss();
               })
             });            
         }

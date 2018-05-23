@@ -9,6 +9,7 @@ import { IonicStorageModule  } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Push } from "@ionic-native/push";
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { ServicesModule } from '../services/services.module';
 import { HomePage } from '../pages/home/home';
@@ -64,6 +65,7 @@ import { MessageProvider } from '../providers/message/message.provider';
     SplashScreen,
     Push,
     Diagnostic,
+    AndroidPermissions,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoadingProvider,
     MessageProvider,

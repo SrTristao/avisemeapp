@@ -132,14 +132,23 @@ export class PerfilPage {
   }
 
   ionViewDidLoad() {
+    let loading = this.loadingProvider.loadingDefault('Carregando informações...');
+    loading.present();
     this.userService.getUser().then(user => {
       this.user = user;
       this.scoreService.getAll(this.user._id).subscribe(response => {
         if (response.result.length > 0)
           this.rateUser = response.result.reduce((tot, score) => tot + score.score, 0)/response.result.length;
-      })
-      this.vehicleService.getAll(this.user._id).subscribe(response => {
-        this.vehicles = response.result;
+        this.vehicleService.getAll(this.user._id).subscribe(response => {
+          this.vehicles = response.result;
+          loading.dismiss();
+        }, err => {
+          this.msgProvider.showMessageToast(err.error.message);
+          loading.dismiss();
+        })
+      }, err => {
+        this.msgProvider.showMessageToast(err.error.message);
+        loading.dismiss();
       })
     });
   }

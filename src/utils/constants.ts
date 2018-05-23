@@ -17,7 +17,8 @@ export class Constants {
     };
     public static score = {
         getAll: '/score/{0}',
-        register: '/score'
+        register: '/score',
+        getByNotification: '/score/notification/{0}'
     };
     public static auth = {
         login: '/auth',

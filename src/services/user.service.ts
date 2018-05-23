@@ -42,12 +42,19 @@ export class UserService {
   }
 
   setToken(token) {
-    this.storage.set('token', token);
-    this.setUser(decode(token));
+    return new Promise((resolve, reject) => {
+      this.storage.set('token', token);
+      this.setUser(decode(token)).then( () => resolve());
+    })
+    
   }
 
-  setUser(user) {
-    this.storage.set('user', user);
+  setUser(user){
+    return new Promise((resolve, reject) => {
+      this.storage.set('user', user).then(result => {
+        resolve('ok');
+      })
+    })    
   }
 
   getUser() {

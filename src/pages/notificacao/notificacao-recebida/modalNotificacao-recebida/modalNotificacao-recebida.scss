@@ -1,0 +1,24 @@
+modal-notificacao-recebida {
+    .informations {
+        display: flex;
+        flex: 1 1 auto;        
+        flex-direction: column;        
+        p {
+            padding: 0;
+            padding-top: 5px;
+            margin: 0;
+        }
+    }   
+
+    .map-container {
+        display: flex;
+        flex: 1 1 auto;  
+    }    
+
+    .rating {
+        display: flex;        
+        align-items: center;
+        font-size: 14px;
+    }
+    
+}

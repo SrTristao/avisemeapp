@@ -22,4 +22,8 @@ export class ScoreService {
     return this.httpService.post(this.url + this.stringFormat(this.score.register), param);
   }
 
+  getByNotification(id) : Observable<any> {
+    return this.httpService.get(this.url + this.stringFormat(this.score.getByNotification, id), {});
+  }
+
 }

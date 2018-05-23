@@ -17,8 +17,6 @@ export class ModalOpcoes {
     this.view.dismiss('cancelado');
   }
   enviar() {
-    const loading = this.loadingProvider.loadingDefault('Enviando notificação');
-    loading.present();
     let message = '';
     this.listaNotificacao.forEach((param, index) => {
       if (index === 0) {
@@ -28,7 +26,6 @@ export class ModalOpcoes {
       }
 
       if(index === this.listaNotificacao.length-1) {
-        loading.dismiss();
         this.view.dismiss(message);
       }
     });

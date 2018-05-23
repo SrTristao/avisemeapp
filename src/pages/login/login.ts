@@ -32,9 +32,10 @@ export class LoginPage {
     const loading = this.loadingProvider.loadingDefault('Conectando...');
     loading.present();
     this.userService.login(usuario).subscribe(response => {
-      this.userService.setToken(response.token);
-      loading.dismiss();
+      this.userService.setToken(response.token).then(param => {
+        loading.dismiss();
       this.navCtrl.setRoot(TabsPage);
+      })      
     }, (err) => {
       loading.dismiss();
       this.msgProvider.showMessageToast('Email ou senha inválidos.', undefined, 'top');
