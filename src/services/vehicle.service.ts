@@ -18,11 +18,11 @@ export class VehicleService {
     return this.httpService.get(this.url + this.stringFormat(this.vehicle.getAll, id_user), {});
   }
 
-  registerVehicle(param) : Observable<any>{
+  registerVehicle(param) : Observable<any>{    
     return this.httpService.post(this.url + this.stringFormat(this.vehicle.register), param);
   }
 
-  updateVehicle(param) : Observable<any>{
+  updateVehicle(param) : Observable<any>{    
     return this.httpService.put(this.url + this.stringFormat(this.vehicle.update), param);
   }
 

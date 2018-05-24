@@ -6,18 +6,23 @@ import { TabsPage } from '../tabs/tabs';
 import { UserService } from '../../services/user.service';
 import { LoadingProvider } from '../../providers/loading/loading.provider';
 import { MessageProvider } from '../../providers/message/message.provider';
+import * as allStates from '../../states';
+console.log(allStates);
 @IonicPage()
 @Component({
   selector: 'page-cadastro',
   templateUrl: 'cadastro.html',
 })
 export class CadastroPage {
-
+  
+  public states = allStates.default;
+  
   public formRegistrar;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private userService: UserService, private loadingProvider: LoadingProvider, 
     private messageProvider: MessageProvider) {
+      console.log(this.states);
     this.formRegistrar = new FormGroup({
       name: new FormControl("", Validators.compose([
         Validators.required
@@ -34,20 +39,19 @@ export class CadastroPage {
       postalCode: new FormControl("", Validators.compose([
         Validators.required        
       ])),
-      complement: new FormControl("", Validators.compose([
-        Validators.required        
+      complement: new FormControl("", Validators.compose([            
       ])),
       email: new FormControl("", Validators.compose([
-        Validators.required        
+        Validators.required, Validators.email      
       ])),
       neighborhood: new FormControl("", Validators.compose([
         Validators.required        
       ])),
       city: new FormControl("", Validators.compose([
-        Validators.required        
+        Validators.required       
       ])),
       state: new FormControl("", Validators.compose([
-        Validators.required        
+        Validators.required, Validators.maxLength(2), Validators.minLength(2)    
       ]))
     })
   }

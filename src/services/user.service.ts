@@ -7,6 +7,7 @@ import { Format } from '../utils/string.format';
 import { HttpService } from './http.service';
 import { Storage } from '@ionic/storage';
 import * as decode from 'jwt-decode';
+import { SqlserviceProvider } from '../providers/sqlservice/sqlservice';
 
 @Injectable()
 export class UserService {
@@ -15,7 +16,7 @@ export class UserService {
   private auth = Constants.auth;
   private version = Constants.VERSION;
   private stringFormat = Format.stringFormat;
-  constructor(private httpService: HttpService, private storage: Storage) {}
+  constructor(private httpService: HttpService, private storage: Storage, private sql:SqlserviceProvider) {}
 
   getUserInformation(email) : Observable<any>{
     return this.httpService.get(this.url + this.stringFormat(this.user.getInformation, email), {});
@@ -41,19 +42,21 @@ export class UserService {
     return this.httpService.post(this.url + this.stringFormat(this.auth.resetPassword), email);
   }
 
-  setToken(token) {
+  setToken(token, password) {
     return new Promise((resolve, reject) => {
       this.storage.set('token', token);
-      this.setUser(decode(token)).then( () => resolve());
+      this.setUser(decode(token), password).then( () => resolve());
     })
     
   }
 
-  setUser(user){
-    return new Promise((resolve, reject) => {
+  setUser(user, password){
+    user.password = password;
+    return new Promise((resolve, reject) => {      
+      this.sql.setUser(user);
       this.storage.set('user', user).then(result => {
         resolve('ok');
-      })
+      });      
     })    
   }
 

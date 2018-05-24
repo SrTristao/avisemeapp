@@ -1,27 +1,66 @@
 {
   "project_info": {
-    "project_number": "47997052919",
-    "firebase_url": "https://avisemeapp-d5b18.firebaseio.com",
-    "project_id": "avisemeapp-d5b18",
-    "storage_bucket": "avisemeapp-d5b18.appspot.com"
+    "project_number": "212063992910",
+    "firebase_url": "https://geotracker-205001.firebaseio.com",
+    "project_id": "geotracker-205001",
+    "storage_bucket": "geotracker-205001.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:47997052919:android:7751319f2706848c",
+        "mobilesdk_app_id": "1:212063992910:android:75264c26c79ad0af",
         "android_client_info": {
-          "package_name": "com.app.avisemecar"
+          "package_name": "com.avisemecar.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "47997052919-lbkko5pmqif0pfpdavh3u115b0v4b19n.apps.googleusercontent.com",
+          "client_id": "212063992910-emrs4qglgqocsuccikn9r2q6577rko6v.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "212063992910-emrs4qglgqocsuccikn9r2q6577rko6v.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAQWKynF6gswciW7o_UaNEDgcFT6rznE4w"
+          "current_key": "AIzaSyCfSNqrHb22Nn9cmudRIkVXjbz8KlwxWRc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212063992910:android:bca5523e327a14bf",
+        "android_client_info": {
+          "package_name": "com.fcmDemo.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212063992910-emrs4qglgqocsuccikn9r2q6577rko6v.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "212063992910-emrs4qglgqocsuccikn9r2q6577rko6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfSNqrHb22Nn9cmudRIkVXjbz8KlwxWRc"
         }
       ],
       "services": {

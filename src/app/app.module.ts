@@ -10,7 +10,11 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Push } from "@ionic-native/push";
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
-
+import { Firebase } from '@ionic-native/firebase';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { UUID } from 'angular2-uuid';
+import { SQLite } from '@ionic-native/sqlite';
 import { ServicesModule } from '../services/services.module';
 import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -26,6 +30,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoadingProvider } from '../providers/loading/loading.provider';
 import { MessageProvider } from '../providers/message/message.provider';
+import { FcmProvider } from '../providers/fcm/fcm';
+import { SqlserviceProvider } from '../providers/sqlservice/sqlservice';
+const firebase = {
+  apiKey: "AIzaSyBlXZy6vnmMc7_-5AFksR2KPF6BFelWf-4",
+  authDomain: "geotracker-205001.firebaseapp.com",
+  projectId:"geotracker-205001"
+ }
+
 
 @NgModule({
   declarations: [
@@ -46,7 +58,9 @@ import { MessageProvider } from '../providers/message/message.provider';
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     Ionic2RatingModule,
-    ServicesModule
+    ServicesModule,
+    AngularFireModule.initializeApp(firebase), 
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,11 +79,16 @@ import { MessageProvider } from '../providers/message/message.provider';
     SplashScreen,
     Push,
     Diagnostic,
+    Firebase,
+    SQLite,
     AndroidPermissions,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoadingProvider,
     MessageProvider,
-    Geolocation
+    Geolocation,
+    FcmProvider,
+    UUID,
+    SqlserviceProvider
   ]
 })
 export class AppModule {}

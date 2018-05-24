@@ -1,43 +1,68 @@
-<ion-content>   
-    <form [formGroup]="formVeiculo"> 
+<ion-content>       
         <ion-item>
             <ion-label color="light" floating>Nome Veículo</ion-label>
-            <ion-input formControlName="name"></ion-input>
+            <ion-input [(ngModel)]="vehicle.name"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Placa</ion-label>
-            <ion-input formControlName="board"></ion-input>
+            <ion-input maskPlaca maxLength="8" [(ngModel)]="vehicle.board" ></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label color="light" floating>UF</ion-label>
-            <ion-input formControlName="state"></ion-input>
+        <ion-item class="up-height">
+            <ion-label>UF</ion-label>
+            <ion-select [(ngModel)]="vehicle.state" okText="Okay" cancelText="Dismiss" interface="popover">
+                <ion-option value="AC">AC</ion-option>
+                <ion-option value="AL">AL</ion-option>
+                <ion-option value="AP">AP</ion-option>
+                <ion-option value="AM">AM</ion-option>
+                <ion-option value="BA">BA</ion-option>
+                <ion-option value="CE">CE</ion-option>
+                <ion-option value="DF">DF</ion-option>
+                <ion-option value="ES">ES</ion-option>
+                <ion-option value="GO">GO</ion-option>
+                <ion-option value="MA">MA</ion-option>
+                <ion-option value="MT">MT</ion-option>
+                <ion-option value="MS">MS</ion-option>
+                <ion-option value="MG">MG</ion-option>
+                <ion-option value="PA">PA</ion-option>
+                <ion-option value="PB">PB</ion-option>
+                <ion-option value="PR">PR</ion-option>
+                <ion-option value="PE">PE</ion-option>
+                <ion-option value="PI">PI</ion-option>
+                <ion-option value="RJ">RJ</ion-option>
+                <ion-option value="RN">RN</ion-option>
+                <ion-option value="RS">RS</ion-option>
+                <ion-option value="RO">RO</ion-option>
+                <ion-option value="SC">SC</ion-option>
+                <ion-option value="SP">SP</ion-option>
+                <ion-option value="SE">SE</ion-option>
+                <ion-option value="TO">TO</ion-option>
+            </ion-select>
         </ion-item>
-        <ion-item>
+        <ion-item class="up-height">
             <ion-label>Tipo</ion-label>
-            <ion-select formControlName="type">
-                <ion-option value="Moto">Moto</ion-option>
-                <ion-option value="Carro">Carro</ion-option>
+            <ion-select [(ngModel)]="vehicle.type" okText="Okay" cancelText="Dismiss" interface="popover">
+                <ion-option value="CARRO">Carro</ion-option>
+                <ion-option value="MOTO">Moto</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Marca</ion-label>
-            <ion-input  formControlName="brand"></ion-input>
+            <ion-input [(ngModel)]="vehicle.brand"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Ano</ion-label>
-            <ion-input  formControlName="year"></ion-input>
+            <ion-input minlength="4" maxlength="4" type="number" [(ngModel)]="vehicle.year"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Modelo</ion-label>
-            <ion-input formControlName="model"></ion-input>
+            <ion-input [(ngModel)]="vehicle.model"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Cor</ion-label>
-            <ion-input formControlName="color"></ion-input>
-        </ion-item>
-    </form>
+            <ion-input [(ngModel)]="vehicle.color"></ion-input>
+        </ion-item>    
     <div class="button-container">
-        <button color="light" ion-button round outline (click)="enviar(formVeiculo.value)"> ENVIAR </button>
+        <button color="light" ion-button round outline [disabled]="vehicle.name.length < 2 && vehicle.board.length !== 8 && vehicle.state.length !== 2 && vehicle.type.length !== 4 && vehicle.year.length !== 4 && vehicle.modelo.length < 2" (click)="enviar(vehicle)"> ENVIAR </button>
         <button (click)="cancelar()" color="danger" ion-button round outline> CANCELAR </button>
     </div>
 </ion-content>

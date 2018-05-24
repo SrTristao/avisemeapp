@@ -146,6 +146,24 @@ ul {
   }
 }
 
+.item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+  color: white !important;
+}
+
+.item-radio {
+  .item-inner {
+    .input-wrapper {
+      ion-label {
+        color: black !important;
+      }
+    }
+  }
+}
+
+.up-height {
+  padding-top: 25px !important;
+}
+
 
 
 

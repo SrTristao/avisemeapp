@@ -19,10 +19,10 @@ export class LoginPage {
     private msgProvider: MessageProvider, private loadingProvider: LoadingProvider,
     private userService: UserService) {
     this.formLogin = new FormGroup({
-      email: new FormControl("corohsnk@gmail.com", Validators.compose([
+      email: new FormControl("", Validators.compose([
         Validators.required, Validators.email     
       ])),
-      password: new FormControl("aviseme1233421", Validators.compose([
+      password: new FormControl("", Validators.compose([
         Validators.required, Validators.minLength(6)
       ]))
     })
@@ -32,7 +32,7 @@ export class LoginPage {
     const loading = this.loadingProvider.loadingDefault('Conectando...');
     loading.present();
     this.userService.login(usuario).subscribe(response => {
-      this.userService.setToken(response.token).then(param => {
+      this.userService.setToken(response.token, usuario.password).then(param => {
         loading.dismiss();
       this.navCtrl.setRoot(TabsPage);
       })      

@@ -29,7 +29,7 @@ export class PerfilPage {
     infoModal.onWillDismiss(data => {
       if (data) {
         this.user = data;
-        this.userService.setUser(data);
+        this.userService.setUser(data, data.password);
       }
     })
   }
@@ -124,7 +124,7 @@ export class PerfilPage {
   }
 
   ionViewDidEnter() {
-    if (this.user._id !== undefined)
+    if (this.user !== undefined)
     this.scoreService.getAll(this.user._id).subscribe(response => {
       if (response.result.length > 0)
         this.rateUser = response.result.reduce((tot, score) => tot + score.score, 0)/response.result.length;
@@ -141,7 +141,14 @@ export class PerfilPage {
           this.rateUser = response.result.reduce((tot, score) => tot + score.score, 0)/response.result.length;
         this.vehicleService.getAll(this.user._id).subscribe(response => {
           this.vehicles = response.result;
-          loading.dismiss();
+          this.scoreService.getAll(this.user._id).subscribe(response => {
+            if (response.result.length > 0)
+              this.rateUser = response.result.reduce((tot, score) => tot + score.score, 0)/response.result.length;
+              loading.dismiss();
+          }, err => {
+            this.msgProvider.showMessageToast(err.error.message);
+            loading.dismiss();
+          })
         }, err => {
           this.msgProvider.showMessageToast(err.error.message);
           loading.dismiss();

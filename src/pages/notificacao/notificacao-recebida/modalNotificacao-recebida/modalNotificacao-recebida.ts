@@ -92,7 +92,11 @@ export class ModalNotificacaoRecebida {
       this.msgProvider.showMessageToast('Ligue o GPS', undefined, 'top');
       loading.dismiss();
       this.view.dismiss();
-    })    
+    }).catch(err => {
+      this.msgProvider.showMessageToast('Ligue o GPS', undefined, 'top');
+      loading.dismiss();
+      this.view.dismiss();
+    });    
   }
 
   setMapOnAll(map) {

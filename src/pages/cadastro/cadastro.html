@@ -32,15 +32,42 @@
       <ion-label color="primary" floating>Cidade</ion-label>
       <ion-input type="text" formControlName="city"></ion-input>
     </ion-item>
-    <ion-item>   
-      <ion-label color="primary" floating>Estado</ion-label>
-      <ion-input type="text" formControlName="state"></ion-input>
+    <ion-item class="up-height">
+      <ion-label>UF</ion-label>
+      <ion-select formControlName="state" okText="Okay" cancelText="Dismiss" interface="popover">
+        <ion-option value="AC">AC</ion-option>
+        <ion-option value="AL">AL</ion-option>
+        <ion-option value="AP">AP</ion-option>
+        <ion-option value="AM">AM</ion-option>
+        <ion-option value="BA">BA</ion-option>
+        <ion-option value="CE">CE</ion-option>
+        <ion-option value="DF">DF</ion-option>
+        <ion-option value="ES">ES</ion-option>
+        <ion-option value="GO">GO</ion-option>
+        <ion-option value="MA">MA</ion-option>
+        <ion-option value="MT">MT</ion-option>
+        <ion-option value="MS">MS</ion-option>
+        <ion-option value="MG">MG</ion-option>
+        <ion-option value="PA">PA</ion-option>
+        <ion-option value="PB">PB</ion-option>
+        <ion-option value="PR">PR</ion-option>
+        <ion-option value="PE">PE</ion-option>
+        <ion-option value="PI">PI</ion-option>
+        <ion-option value="RJ">RJ</ion-option>
+        <ion-option value="RN">RN</ion-option>
+        <ion-option value="RS">RS</ion-option>
+        <ion-option value="RO">RO</ion-option>
+        <ion-option value="SC">SC</ion-option>
+        <ion-option value="SP">SP</ion-option>
+        <ion-option value="SE">SE</ion-option>
+        <ion-option value="TO">TO</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label color="primary" floating>Senha</ion-label>
       <ion-input type="password" formControlName="password" ></ion-input>
     </ion-item>
-    <button ion-button full class="btn-registrar" color="danger">Registrar</button>
+    <button ion-button full class="btn-registrar" [disabled]="!formRegistrar.valid" color="danger">Registrar</button>
   </form>
-  <button ion-button full class="btn-voltar" color="secondary" (click)="voltar()"> Voltar </button>
+  <button ion-button full class="btn-voltar" color="secondary"  (click)="voltar()"> Voltar </button>
 </ion-content>

@@ -4,6 +4,8 @@ import { LoadingProvider } from '../../../providers/loading/loading.provider';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { MessageProvider } from '../../../providers/message/message.provider';
+import * as allStates from '../../../states';
+
 @IonicPage()
 @Component({
   selector: 'modal-info',
@@ -12,7 +14,8 @@ import { MessageProvider } from '../../../providers/message/message.provider';
 export class ModalInfo {
 
   public formUsuario: FormGroup;
-
+  public states = allStates.default;
+  
   constructor(public navCtrl: NavController, private view: ViewController, 
   private loadingProvider: LoadingProvider,  private userService: UserService,
   private messageProvider: MessageProvider, private params: NavParams) {

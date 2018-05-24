@@ -8,7 +8,11 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Platform } from 'ionic-angular';
 import { NotificationService } from '../../services/notification.service';
 import { Diagnostic } from '@ionic-native/diagnostic';
-
+import { tap } from 'rxjs/operators';
+import { FcmProvider } from '../../providers/fcm/fcm';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { UUID } from 'angular2-uuid';
+import { NotificacaoPage } from '../notificacao/notificacao';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -22,9 +26,19 @@ export class HomePage {
     private vehicleService: VehicleService, private userService: UserService,
     private geolocation: Geolocation, private platform: Platform,
     private notificationService: NotificationService,
-    private diagnostic: Diagnostic) {
+    private diagnostic: Diagnostic, private fcm: FcmProvider,
+    private afs: AngularFirestore) {
       this.userService.getUser().then(user => {
         this.user = user;
+        // Listen to incoming messages
+        fcm.getToken(this.user._id);
+        fcm.listenToNotifications().pipe(
+          tap(msg => {                        
+            this.msgProvider.showMessageToast(msg.body, undefined, 'top'); 
+            this.navCtrl.push(NotificacaoPage);
+          })
+        )
+        .subscribe()
       });
     }
 
@@ -39,6 +53,13 @@ export class HomePage {
     }).catch(error => {
       this.msgProvider.showMessageToast('GPS não habilitado.')
     });
+  }
+
+  private async sendNotification(notification, load) {
+    await this.afs.collection('notifications').doc(UUID.UUID()).set(notification);
+    this.msgProvider.showMessageToast('Notificação enviada com sucesso !!!', undefined, 'top');
+    this.placa = '';
+    load.dismiss();
   }
 
   private sendMessage() {
@@ -72,13 +93,18 @@ export class HomePage {
               notification.lon_user_send = pos.coords.longitude;
               notification.message = data;
               this.notificationService.registerNotification(notification).subscribe(response => {
-                this.msgProvider.showMessageToast('Notificação enviada com sucesso !!!', undefined, 'top');
-                this.placa = '';
-                load.dismiss();
+                this.sendNotification({
+                  userId: response.result.user_receive,
+                  message: data,
+                  board: response.result.board
+                }, load);
               }, err => {
                 this.msgProvider.showMessageToast(err.error.message, undefined, 'top');
                 load.dismiss();
               })
+            }).catch(err => {
+              this.msgProvider.showMessageToast('Não foi possivel pegar a localização, favor verificar o GPS.');
+              load.dismiss();
             });            
         }
       })

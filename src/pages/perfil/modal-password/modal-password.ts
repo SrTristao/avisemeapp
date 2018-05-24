@@ -44,7 +44,7 @@ export class ModalPassword {
     const loading = this.loadingProvider.loadingDefault('Atualizando senha...');
     loading.present();
     this.userService.changePassword(passwords).subscribe(response => {
-      this.userService.setToken(response.result);
+      this.userService.setToken(response.result, passwords.newPassword);
       this.msgProvider.showMessageToast(response.message);
       loading.dismiss();
       this.view.dismiss();
