@@ -32,7 +32,7 @@ export class ModalVeiculo {
   enviar(vehicle) {        
     const loading = this.loadingProvider.loadingDefault('Salvando veículo...');
     loading.present();
-    if (vehicle._id !== '') {
+    if (vehicle._id !== undefined) {
       this.vehicleService.updateVehicle(vehicle).subscribe(response => {
         loading.dismiss();
         this.view.dismiss(vehicle);
@@ -41,7 +41,8 @@ export class ModalVeiculo {
         this.messageProvider.showMessageToast(err.error.message, undefined, 'top');
       })
     } else {
-      delete vehicle._id;
+      vehicle.id_user = this.params.get('id_user');
+      console.log(vehicle);
       this.vehicleService.registerVehicle(vehicle).subscribe(response => {
         loading.dismiss();
         this.view.dismiss(response.result);

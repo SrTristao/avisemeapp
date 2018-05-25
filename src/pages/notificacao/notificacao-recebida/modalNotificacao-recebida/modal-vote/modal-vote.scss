@@ -1,0 +1,37 @@
+modal-vote{
+    .rating {
+        display: flex;
+        flex-direction: row;    
+        align-items: center;
+        padding-left: 10px;
+    }
+    ion-content {
+        width: 90%;
+        height: 16%;
+        top: 8.5%;
+        left: 5%;
+        right: 5%;
+        bottom: 28.5%;
+        border-radius: 5px;
+        /* background-color: black !important; */
+        border: 1px solid #FFD700;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .scroll-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn-close {
+        position: relative;
+        top: -28px;        
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        box-shadow: none;
+    }
+}

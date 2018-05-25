@@ -1,5 +1,11 @@
 page-login {
     
+    .button-password {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+    }
     .label-ios-primary, .item-input .label-ios-primary, .item-select .label-ios-primary, .item-datetime .label-ios-primary, .text-input {
         color: white;
     }

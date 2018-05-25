@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, ViewController } from 'ionic-angular';
+import { NavController, IonicPage, ViewController, NavParams } from 'ionic-angular';
 import { LoadingProvider } from '../../../providers/loading/loading.provider';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
@@ -15,9 +15,9 @@ export class ModalResetSenha {
 
   constructor(public navCtrl: NavController, private view: ViewController, 
   private loadingProvider: LoadingProvider, private userService: UserService,
-  private messageProvider: MessageProvider) {
+  private messageProvider: MessageProvider, private params: NavParams) {
     this.formPassword = new FormGroup({
-      email: new FormControl("", [Validators.required, Validators.email])
+      email: new FormControl(params.get('email'), [Validators.required, Validators.email])
     });
   }
 
@@ -26,7 +26,7 @@ export class ModalResetSenha {
     loading.present();
     this.userService.resetPassword(email).subscribe(response => {
       loading.dismiss();
-      this.view.dismiss();
+      this.view.dismiss('sucesso');
     }, err => {
       loading.dismiss();
       this.messageProvider.showMessageToast('Email inválido.');

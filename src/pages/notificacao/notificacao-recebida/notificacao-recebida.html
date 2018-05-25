@@ -1,6 +1,6 @@
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let notification of notifications" (click)="openNotification(notification)">
+    <ion-item *ngFor="let notification of notifications | forReverse" (click)="openNotification(notification)">
       <h2> PLACA: {{notification.board.toUpperCase()}} </h2>
       <p> Dia: {{beautifulDate(notification.createdAt)}} - {{beautifulHours(notification.createdAt)}} </p>
     </ion-item>

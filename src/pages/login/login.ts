@@ -26,6 +26,7 @@ export class LoginPage {
         Validators.required, Validators.minLength(6)
       ]))
     })
+    console.log(this.formLogin);
   }
 
   login(usuario) {
@@ -46,12 +47,13 @@ export class LoginPage {
     this.navCtrl.push(CadastroPage);
   }
 
-  resetSenha() {
-    const modalResetSenha = this.modalCtrl.create('ModalResetSenha', {}, { enableBackdropDismiss: false });
+  resetSenha(login) {
+    const modalResetSenha = this.modalCtrl.create('ModalResetSenha', {email: login.email}, { enableBackdropDismiss: false });
 
     modalResetSenha.present();
 
-    modalResetSenha.onWillDismiss(() => {
+    modalResetSenha.onWillDismiss((data) => {
+      if (data === 'sucesso')
       this.msgProvider.showMessageToast('Email enviado com sucesso !!!', undefined, 'top');
     })
   }

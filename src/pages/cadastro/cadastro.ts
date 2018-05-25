@@ -60,13 +60,16 @@ export class CadastroPage {
     const loading = this.loadingProvider.loadingDefault('Registrando usuário...');
     loading.present();
     console.log(usuario);
-    this.userService.registerUser(usuario).subscribe(response => {
-      loading.dismiss();
-      if(response.message === 'Usuário registrado com sucesso.') {
-        this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
-      } else {
-        this.messageProvider.showMessageToast(response.message);
-      }
+    this.userService.registerUser(usuario).subscribe(response => {                    
+        this.userService.login({email: usuario.email, password: usuario.password}).subscribe(result => {
+          this.userService.setToken(result.token, usuario.password).then(token => {
+            loading.dismiss();
+            this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+          })
+        }, err => {
+          loading.dismiss();
+          this.messageProvider.showMessageToast(err.error.message);
+        })
     }, (err) => {
       loading.dismiss();
       this.messageProvider.showMessageToast(err.error.message);

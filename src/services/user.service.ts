@@ -67,4 +67,8 @@ export class UserService {
       });
     })
   }
+
+  deleteUser() {
+    this.sql.deleteUser();
+  }
 }

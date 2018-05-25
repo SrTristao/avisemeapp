@@ -1,4 +1,4 @@
-<ion-content (click)="mainClick(fab, $event)">
+<ion-content (tap)="mainClick(fab, $event)">
   <div class="info-perfil">
     <div class="editar-info">
         <ion-fab top right edge class="top-menu" #fab>
@@ -19,7 +19,7 @@
             </ion-fab-list>
           </ion-fab>
     </div>
-    <img src="assets/imgs/perfil.jpeg"/>
+    <!-- <img src="assets/imgs/perfil.jpeg"/> -->
     <span>{{user !== undefined ? user.name: ''}}</span>
   </div>
   <div class="rating">

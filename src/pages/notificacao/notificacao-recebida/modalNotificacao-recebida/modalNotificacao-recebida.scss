@@ -1,5 +1,9 @@
 modal-notificacao-recebida {
+    .star-color {
+        color: #FFD700;
+    }
     .informations {
+        padding-left: 10px;
         display: flex;
         flex: 1 1 auto;        
         flex-direction: column;        
@@ -9,6 +13,10 @@ modal-notificacao-recebida {
             margin: 0;
         }
     }   
+
+    .distancia {
+        padding-left: 10px;
+    }
 
     .map-container {
         display: flex;

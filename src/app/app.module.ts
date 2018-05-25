@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Ionic2MaskDirective } from "ionic2-mask-directive";
 import { MaskPlacaDirective } from '../directives/maskPlaca';
+import { DirectivesModule } from '../directives/directives.module';
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { IonicStorageModule  } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -24,7 +25,7 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { NotificacaoRecebidaPage } from '../pages/notificacao/notificacao-recebida/notificacao-recebida';
 import { NotificacaoEnviadaPage } from '../pages/notificacao/notificacao-enviada/notificacao-enviada'; 
-
+import { PipesModule } from '../pipes/pipes.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -47,8 +48,7 @@ const firebase = {
     NotificacaoPage,
     TabsPage,
     LoginPage,
-    CadastroPage,
-    MaskPlacaDirective,
+    CadastroPage,    
     Ionic2MaskDirective,
     NotificacaoRecebidaPage,
     NotificacaoEnviadaPage
@@ -60,7 +60,9 @@ const firebase = {
     Ionic2RatingModule,
     ServicesModule,
     AngularFireModule.initializeApp(firebase), 
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    DirectivesModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

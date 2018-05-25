@@ -51,7 +51,7 @@
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Ano</ion-label>
-            <ion-input minlength="4" maxlength="4" type="number" [(ngModel)]="vehicle.year"></ion-input>
+            <ion-input maskYear minlength="4" maxlength="4" type="number" [(ngModel)]="vehicle.year"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="light" floating>Modelo</ion-label>
@@ -62,7 +62,7 @@
             <ion-input [(ngModel)]="vehicle.color"></ion-input>
         </ion-item>    
     <div class="button-container">
-        <button color="light" ion-button round outline [disabled]="vehicle.name.length < 2 && vehicle.board.length !== 8 && vehicle.state.length !== 2 && vehicle.type.length !== 4 && vehicle.year.length !== 4 && vehicle.modelo.length < 2" (click)="enviar(vehicle)"> ENVIAR </button>
+        <button color="light" ion-button round outline [disabled]="vehicle.name.length < 2 && vehicle.board.length !== 8 && vehicle.state.length !== 2 && vehicle.type.length !== 4 && vehicle.year.length !== 4 && vehicle.model.length < 2" (click)="enviar(vehicle)"> ENVIAR </button>
         <button (click)="cancelar()" color="danger" ion-button round outline> CANCELAR </button>
     </div>
 </ion-content>

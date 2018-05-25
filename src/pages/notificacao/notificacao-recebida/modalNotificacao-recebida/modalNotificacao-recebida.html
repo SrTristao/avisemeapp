@@ -2,9 +2,12 @@
   <ion-navbar>
     <ion-title>Notificação Recebida</ion-title>
     <ion-buttons end>
+        <button class="star-color" ion-button icon-only (click)="vote()">
+            <ion-icon ios="ios-star" md="md-star"></ion-icon>
+        </button>        
         <button ion-button icon-only (click)="closeModal()">
           <ion-icon md="ios-close-circle-outline"></ion-icon>
-        </button>
+        </button>        
       </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -13,21 +16,9 @@
     <p>Notificação: {{notification.message}}</p>    
     <p>Placa do veículo: {{notification.board}}</p>    
     <p>Dia da notificação: {{beautifulDate(notification.createdAt)}} - {{beautifulHours(notification.createdAt)}}</p>
-    <div class="rating" *ngIf="evaluate == false">
-        <span> Avalie: </span>
+    <div class="rating">
+        <span> A pessoa que notificou tem: </span>
       <rating [(ngModel)]="rateUser" 
-        readOnly="false"
-        max="5"
-        emptyStarIconName="star-outline"
-        halfStarIconName="star-half"
-        starIconName="star"
-        nullable="false"
-        (ngModelChange)="onModelChange($event)">
-      </rating>
-    </div>
-    <div class="rating" *ngIf="evaluate == true">
-        <span> Você avaliou:</span>
-      <rating [(ngModel)]="rateUser"  
         readOnly="true"
         max="5"
         emptyStarIconName="star-outline"
@@ -39,6 +30,6 @@
     </div>
 
   </div>
-  <p> A distancia entre você e a pessoa que a notificou é: {{distance}}</p>
+  <p class="distancia" *ngIf="distance !== 0"> A distancia entre você e a pessoa que a notificou é: {{distance}}</p>
   <div style="width:100%; height:100%" #map id="map"></div>  
 </ion-content>

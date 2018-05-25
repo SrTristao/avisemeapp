@@ -15,5 +15,5 @@
     <button ion-button full class="btn-logar" [disabled]="!formLogin.valid" color="danger">Entrar</button>
   </form>
   <button ion-button full class="btn-registar" color="secondary" (click)="registrar()"> Registrar </button>
-  <span class="recuperar-senha" (click)="resetSenha()"> Esqueceu sua senha? </span>
+  <button class="button-password recuperar-senha" (click)="resetSenha(formLogin.value)" [disabled]="formLogin.value.email.length <= 5"> Esqueceu sua senha? </button>
 </ion-content>

@@ -120,7 +120,8 @@ export class PerfilPage {
 
   sair(fab?: FabContainer) {
     this.closeFab(fab);
-    this.myApp.getRootNav().push(LoginPage, {});
+    this.userService.deleteUser();
+    this.myApp.getRootNavs()[0].setRoot(LoginPage, {});
   }
 
   ionViewDidEnter() {

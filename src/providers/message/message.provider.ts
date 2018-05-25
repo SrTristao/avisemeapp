@@ -5,7 +5,7 @@ import { ToastController, AlertController } from 'ionic-angular';
 export class MessageProvider {
     
     constructor(private toastController: ToastController, private alertController: AlertController) {}
-
+    
     showMessageToast(message = ``, duration = 2000, position = 'bottom') {
         let toast = this.toastController.create({
             message,
@@ -14,16 +14,25 @@ export class MessageProvider {
         });
         toast.present();
     }
-
+    
     showMessageConfirm(title = '', message = '', buttonCancel, buttonConfirm) {
         const popUp = this.alertController.create({
             title,
             message,
             buttons: [
-              buttonCancel,
-              buttonConfirm
+                buttonCancel,
+                buttonConfirm
             ]
-          });
-          popUp.present();
+        });
+        popUp.present();
     }
+    
+    showMessage(title = '', message = '') {
+        let alert = this.alertController.create({
+            title: title,
+            subTitle: message,
+            buttons: ['OK']
+        });
+        alert.present();
+    }                
 }

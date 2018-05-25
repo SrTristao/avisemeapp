@@ -52,11 +52,11 @@ export class MyApp {
 
   openLogin() {
     this.rootPage = LoginPage;
-    this.showSplash = false;
+    timer(2000).subscribe( () => this.showSplash = false);    
   }
 
   openHome() {
     this.rootPage = TabsPage;
-    this.showSplash = false;
+    timer(2000).subscribe( () => this.showSplash = false);
   }
 }
