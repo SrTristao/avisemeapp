@@ -1,4 +1,4 @@
-<ion-content (tap)="mainClick(fab, $event)">
+<ion-content (click)="mainClick(fab, $event)">
   <div class="info-perfil">
     <div class="editar-info">
         <ion-fab top right edge class="top-menu" #fab>
@@ -35,22 +35,15 @@
     </rating>
   </div>
 
-  <ion-scroll scrollX="true" class="veiculos">
-    <div class="infinit-scroll">
-      <div class="veiculo" (click)="openVeiculo(vehicle)" *ngFor="let vehicle of vehicles;  let idx = index"
-      (press)="pressEvent(vehicle, idx)">
-        <div class="veiculo-info">
-          <span class="title-veiculo"> {{vehicle.name}} </span>     
-          <span class="placa-veiculo"> {{vehicle.board}} </span>
-          <span class="tipo-veiculo"> {{vehicle.type}} </span>
-        </div>  
-      </div>
-      <div class="veiculo" (click)="addVeiculo()">
-        <div class="veiculo-info">
-            <ion-icon name="add-circle"></ion-icon>
-            <span class="tipo-veiculo">Adicionar Veiculo</span>
-        </div>
-      </div>
+  <ion-scroll scrollX="true">
+    <div (click)="openVeiculo(vehicle)" (press)="pressEvent(vehicle, idx)" class="veiculo-info" *ngFor="let vehicle of vehicles;  let idx = index">      
+      <span class="title-veiculo"> {{vehicle.name}} </span>     
+      <span class="placa-veiculo"> {{vehicle.board}} </span>
+      <span class="tipo-veiculo"> {{vehicle.type}} </span>    
+    </div>        
+    <div (click)="addVeiculo()" class="veiculo-info">        
+      <ion-icon name="add-circle"></ion-icon>
+      <span class="tipo-veiculo">Adicionar Veiculo</span>        
     </div>
   </ion-scroll>
 </ion-content>
